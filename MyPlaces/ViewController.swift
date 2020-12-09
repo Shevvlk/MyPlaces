@@ -72,12 +72,13 @@ class ViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568627451, green: 0.8431372549, blue: 0.7058823529, alpha: 1)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(secondView))
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+    
     }
     
     // MARK: - Переход в FirstViewController при нажатии +
     @objc func secondView () {
-        let secondController = FirstViewController()
-        secondController.delegete = self
+        let secondController = AddingNewPlaceViewController()
+//        secondController.delegete = self
         self.present(UINavigationController(rootViewController: secondController), animated: true, completion: nil)
     }
     

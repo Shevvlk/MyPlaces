@@ -250,17 +250,24 @@ extension FirstViewController: UIImagePickerControllerDelegate {
     
     func chooseImagePicker (source: UIImagePickerController.SourceType ) {
         if UIImagePickerController.isSourceTypeAvailable(source) {
+            
+            
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
-            imagePicker.sourceType = source
-            present(imagePicker,animated: true)
+            
+            DispatchQueue.global(qos: .background).async {
+              imagePicker.sourceType = source
+                DispatchQueue.main.async {
+                    self.present(imagePicker,animated: true)
+                }
+            }
         }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         photoImage.setImage(info[.editedImage] as? UIImage, for: .normal)
-        photoImage.contentMode = .scaleAspectFit
+        photoImage.contentMode = .scaleAspectFill
         photoImage.clipsToBounds = true
         dismiss(animated: true)
     }

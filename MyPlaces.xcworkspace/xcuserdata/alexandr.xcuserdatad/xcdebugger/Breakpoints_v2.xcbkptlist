@@ -84,5 +84,128 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E50CE03-444C-4F81-84C2-4870562446E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlaces/FirstViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "locationTxtField"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - a15cfd57441ffcd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UITextField in variable initialization expression of MyPlaces.FirstViewController.locationTxtField : __C.UITextField"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - cf2d3e2f24ac9b09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.locationTxtField.getter : __C.UITextField"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - 47b9701e2c42821d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.locationTxtField.setter : __C.UITextField"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - 9caf30152d160bc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.locationTxtField.modify : __C.UITextField"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - 47af43f26c938d41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.locationTxtField.modify : __C.UITextField with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - aa92418d2662f8e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MyPlaces.FirstViewController"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "595">
+               </Location>
+               <Location
+                  uuid = "4E50CE03-444C-4F81-84C2-4870562446E4 - 3f7031630aea1ca2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyPlaces.FirstViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MyPlaces.FirstViewController&gt;"
+                  moduleName = "MyPlaces"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandr/Desktop/%D0%9C%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/MyPlaces/MyPlaces/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "536">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
