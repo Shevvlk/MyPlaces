@@ -10,7 +10,7 @@ class StaticTabel: UITableViewCell {
         return label
     }()
     
-    let  textField: UITextField = {
+    var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

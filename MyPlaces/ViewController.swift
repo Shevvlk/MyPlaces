@@ -20,11 +20,11 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Регистрация ячеки
+
         tableView.register(LocationdataTableViewCell.self, forCellReuseIdentifier: "contactCell")
-        // Отображение из базы данных
+
         places = realm.objects(Place.self)
-        // Вызов функции настройки навигации
+
         setUpNavigation()
     }
     
@@ -41,7 +41,7 @@ class ViewController: UITableViewController {
         cell.nameLabel.text = place.name
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
-        cell.photoImage.image = UIImage(data: place.imageData!)
+//        cell.photoImage.image = UIImage(data: place.imageData!)
         
         return cell
     }
@@ -75,22 +75,22 @@ class ViewController: UITableViewController {
     
     }
     
-    // MARK: - Переход в FirstViewController при нажатии +
+
     @objc func secondView () {
         let secondController = AddingNewPlaceViewController()
 //        secondController.delegete = self
         self.present(UINavigationController(rootViewController: secondController), animated: true, completion: nil)
     }
     
-    // MARK: - Настройка высоты ячейки
+   
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    // MARK: - Кнопка edit
+
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-    // MARK: - Удаление ячейки
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let place = places[indexPath.row]
@@ -100,10 +100,10 @@ class ViewController: UITableViewController {
     }
     
 }
-// MARK: - Реализация протокола передачи сохраненной информации
+
 extension ViewController : ArraytTransferDelegate {
     func saveArray() {
-        //  Обновление таблицы
+
         tableView.reloadData()
     }
 }
