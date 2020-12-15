@@ -8,24 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		12DB1DF447FC034B881BD0B3 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C888243D002DC88EB5961 /* Pods_MyPlaces.framework */; };
+		A80E82692588A14300D0D683 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80E82682588A14300D0D683 /* MapViewController.swift */; };
 		A820C08625810784008EF925 /* NewPlaceViewController + ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A820C08525810784008EF925 /* NewPlaceViewController + ImagePickerController.swift */; };
 		A83105162502576200604086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83105152502576200604086 /* AppDelegate.swift */; };
 		A83105182502576200604086 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83105172502576200604086 /* SceneDelegate.swift */; };
 		A831051A2502576200604086 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83105192502576200604086 /* MainViewController.swift */; };
 		A831051F2502576500604086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A831051E2502576500604086 /* Assets.xcassets */; };
 		A831052E25028C0500604086 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A831052D25028C0500604086 /* Place.swift */; };
-		A831053025029FC600604086 /* CustomDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A831052F25029FC600604086 /* CustomDisplayTableViewCell.swift */; };
+		A831053025029FC600604086 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A831052F25029FC600604086 /* MainTableViewCell.swift */; };
 		A84D9A3D2514E0120024328C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84D9A3C2514E0120024328C /* StorageManager.swift */; };
 		A8822D6E25882F0500A8F37D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83105202502576500604086 /* LaunchScreen.storyboard */; };
 		A88CD5B62578DFC9001E1B9A /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88CD5B52578DFC9001E1B9A /* NewPlaceViewController.swift */; };
-		A88CD5BA2579300A001E1B9A /* CustomInputTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88CD5B92579300A001E1B9A /* CustomInputTabelViewCell.swift */; };
-		A8E8A6EC2587450800E53150 /* CustomImageTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E8A6EB2587450800E53150 /* CustomImageTabelViewCell.swift */; };
+		A88CD5BA2579300A001E1B9A /* NewPlaceInputTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88CD5B92579300A001E1B9A /* NewPlaceInputTabelViewCell.swift */; };
+		A8A510432588EAD30084EC9A /* NewPlaceViewController + CustomImageTabelViewCellDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A510422588EAD30084EC9A /* NewPlaceViewController + CustomImageTabelViewCellDelegat.swift */; };
+		A8E8A6EC2587450800E53150 /* NewPlaceImageTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E8A6EB2587450800E53150 /* NewPlaceImageTabelViewCell.swift */; };
 		A8E8A6F82587557C00E53150 /* NewPlaceViewController + AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E8A6F72587557C00E53150 /* NewPlaceViewController + AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00FA169A3BCF446994F62319 /* Pods-MyPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.debug.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.debug.xcconfig"; sourceTree = "<group>"; };
 		865C888243D002DC88EB5961 /* Pods_MyPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80E82682588A14300D0D683 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A820C08525810784008EF925 /* NewPlaceViewController + ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPlaceViewController + ImagePickerController.swift"; sourceTree = "<group>"; };
 		A83105122502576200604086 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83105152502576200604086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,11 +38,12 @@
 		A83105212502576500604086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83105232502576500604086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A831052D25028C0500604086 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		A831052F25029FC600604086 /* CustomDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		A831052F25029FC600604086 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		A84D9A3C2514E0120024328C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A88CD5B52578DFC9001E1B9A /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
-		A88CD5B92579300A001E1B9A /* CustomInputTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputTabelViewCell.swift; sourceTree = "<group>"; };
-		A8E8A6EB2587450800E53150 /* CustomImageTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageTabelViewCell.swift; sourceTree = "<group>"; };
+		A88CD5B92579300A001E1B9A /* NewPlaceInputTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceInputTabelViewCell.swift; sourceTree = "<group>"; };
+		A8A510422588EAD30084EC9A /* NewPlaceViewController + CustomImageTabelViewCellDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPlaceViewController + CustomImageTabelViewCellDelegat.swift"; sourceTree = "<group>"; };
+		A8E8A6EB2587450800E53150 /* NewPlaceImageTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceImageTabelViewCell.swift; sourceTree = "<group>"; };
 		A8E8A6F72587557C00E53150 /* NewPlaceViewController + AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPlaceViewController + AlertController.swift"; sourceTree = "<group>"; };
 		DB1EAA84201DEE2495316785 /* Pods-MyPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.release.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +75,14 @@
 				865C888243D002DC88EB5961 /* Pods_MyPlaces.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A80E826C2588BF5200D0D683 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A83105192502576200604086 /* MainViewController.swift */,
+			);
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		A83105092502576200604086 = {
@@ -119,18 +131,19 @@
 		A87EF59A2587E4B50087226A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A87EF59B2587E4BF0087226A /* MainViewController */,
+				A80E826C2588BF5200D0D683 /* MainViewController */,
 				A87EF59C2587E4DE0087226A /* NewPlaceViewController */,
+				A87EF59B2587E4BF0087226A /* MapViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		A87EF59B2587E4BF0087226A /* MainViewController */ = {
+		A87EF59B2587E4BF0087226A /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A83105192502576200604086 /* MainViewController.swift */,
+				A80E82682588A14300D0D683 /* MapViewController.swift */,
 			);
-			path = MainViewController;
+			path = MapViewController;
 			sourceTree = "<group>";
 		};
 		A87EF59C2587E4DE0087226A /* NewPlaceViewController */ = {
@@ -139,6 +152,7 @@
 				A88CD5B52578DFC9001E1B9A /* NewPlaceViewController.swift */,
 				A8E8A6F72587557C00E53150 /* NewPlaceViewController + AlertController.swift */,
 				A820C08525810784008EF925 /* NewPlaceViewController + ImagePickerController.swift */,
+				A8A510422588EAD30084EC9A /* NewPlaceViewController + CustomImageTabelViewCellDelegat.swift */,
 			);
 			path = NewPlaceViewController;
 			sourceTree = "<group>";
@@ -146,9 +160,9 @@
 		A87EF59D2587E5000087226A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A831052F25029FC600604086 /* CustomDisplayTableViewCell.swift */,
-				A88CD5B92579300A001E1B9A /* CustomInputTabelViewCell.swift */,
-				A8E8A6EB2587450800E53150 /* CustomImageTabelViewCell.swift */,
+				A831052F25029FC600604086 /* MainTableViewCell.swift */,
+				A88CD5B92579300A001E1B9A /* NewPlaceInputTabelViewCell.swift */,
+				A8E8A6EB2587450800E53150 /* NewPlaceImageTabelViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,14 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A831052E25028C0500604086 /* Place.swift in Sources */,
-				A8E8A6EC2587450800E53150 /* CustomImageTabelViewCell.swift in Sources */,
-				A831053025029FC600604086 /* CustomDisplayTableViewCell.swift in Sources */,
+				A8E8A6EC2587450800E53150 /* NewPlaceImageTabelViewCell.swift in Sources */,
+				A831053025029FC600604086 /* MainTableViewCell.swift in Sources */,
 				A820C08625810784008EF925 /* NewPlaceViewController + ImagePickerController.swift in Sources */,
-				A88CD5BA2579300A001E1B9A /* CustomInputTabelViewCell.swift in Sources */,
+				A88CD5BA2579300A001E1B9A /* NewPlaceInputTabelViewCell.swift in Sources */,
 				A831051A2502576200604086 /* MainViewController.swift in Sources */,
+				A80E82692588A14300D0D683 /* MapViewController.swift in Sources */,
 				A83105162502576200604086 /* AppDelegate.swift in Sources */,
 				A83105182502576200604086 /* SceneDelegate.swift in Sources */,
 				A8E8A6F82587557C00E53150 /* NewPlaceViewController + AlertController.swift in Sources */,
+				A8A510432588EAD30084EC9A /* NewPlaceViewController + CustomImageTabelViewCellDelegat.swift in Sources */,
 				A88CD5B62578DFC9001E1B9A /* NewPlaceViewController.swift in Sources */,
 				A84D9A3D2514E0120024328C /* StorageManager.swift in Sources */,
 			);

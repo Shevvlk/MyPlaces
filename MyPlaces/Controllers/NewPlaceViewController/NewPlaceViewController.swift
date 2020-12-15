@@ -10,24 +10,24 @@ class NewPlaceViewController: UITableViewController {
     var currentPlace: Place? = nil
     var imageIsChanged = false
     
-    let photoImageCell: CustomImageTabelViewCell = CustomImageTabelViewCell()
+    let photoImageCell: NewPlaceImageTabelViewCell = NewPlaceImageTabelViewCell()
     
-    let placeNameCell: CustomInputTabelViewCell = {
-        let placeName = CustomInputTabelViewCell()
+    let placeNameCell: NewPlaceInputTabelViewCell = {
+        let placeName = NewPlaceInputTabelViewCell()
         placeName.labelDescription.text = "Name"
         placeName.textFieldDescription.placeholder = "Place name"
         return placeName
     }()
     
-    let placeLocationCell: CustomInputTabelViewCell = {
-        let placeLocation = CustomInputTabelViewCell()
+    let placeLocationCell: NewPlaceInputTabelViewCell = {
+        let placeLocation = NewPlaceInputTabelViewCell()
         placeLocation.labelDescription.text = "Location"
         placeLocation.textFieldDescription.placeholder = "Place location"
         return placeLocation
     }()
     
-    let placeTypeCell: CustomInputTabelViewCell = {
-        let placeType = CustomInputTabelViewCell()
+    let placeTypeCell: NewPlaceInputTabelViewCell = {
+        let placeType = NewPlaceInputTabelViewCell()
         placeType.labelDescription.text = "Type"
         placeType.textFieldDescription.placeholder = "Place type"
         return placeType
@@ -46,7 +46,10 @@ class NewPlaceViewController: UITableViewController {
         
         super.viewDidLoad()
         
+        photoImageCell.delegate = self
+        
         self.view.backgroundColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
+        
         tableView.tableFooterView = UIView()
         tableView.separatorInset.right = 15
         tableView.showsVerticalScrollIndicator = false
@@ -120,9 +123,9 @@ class NewPlaceViewController: UITableViewController {
             
             guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
             
-            photoImageCell.imageOfPlaceView.image = image
-            photoImageCell.imageOfPlaceView.contentMode = .scaleAspectFill
-            photoImageCell.imageOfPlaceView.clipsToBounds = true
+            photoImageCell.placeImageView.image = image
+            photoImageCell.placeImageView.contentMode = .scaleAspectFill
+            photoImageCell.placeImageView.clipsToBounds = true
             placeNameCell.textFieldDescription.text = currentPlace?.name
             placeLocationCell.textFieldDescription.text = currentPlace?.location
             placeTypeCell.textFieldDescription.text = currentPlace?.type
@@ -165,9 +168,9 @@ class NewPlaceViewController: UITableViewController {
         var image: UIImage?
         
         if imageIsChanged {
-            image =  photoImageCell.imageOfPlaceView.image
+            image =  photoImageCell.placeImageView.image
         } else {
-            image = #imageLiteral(resourceName: "background icon")
+            image = #imageLiteral(resourceName: "camera")
         }
         
         let imageData = image?.pngData()
@@ -184,5 +187,3 @@ class NewPlaceViewController: UITableViewController {
         }
     }
 }
-
-

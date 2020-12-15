@@ -9,13 +9,22 @@ class MainViewController: UITableViewController {
     private var realm:  Realm?
     private let storageManager = StorageManager()
     
+    let titleLabel: UILabel = {
+        let lab = UILabel()
+        lab.text = "Favourite places"
+        lab.textColor = UIColor.black
+        lab.font = UIFont(name: "Snell Roundhand", size: 32)
+        lab.textAlignment = .center
+        return lab
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
         
         tableView.tableFooterView = UIView()
-        tableView.register(LocationdataTableViewCell.self, forCellReuseIdentifier: "contactCell")
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "contactCell")
         
         do {
             realm = try Realm()
@@ -26,6 +35,7 @@ class MainViewController: UITableViewController {
         places = realm?.objects(Place.self)
         
         setUpNavigation()
+        
         token = realm?.observe { [weak self] notification, realm in
             self?.tableView.reloadData()
         }
@@ -38,17 +48,18 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! LocationdataTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! MainTableViewCell
         let place = places?[indexPath.row]
         cell.nameLabel.text = place?.name
         cell.locationLabel.text = place?.location
         cell.typeLabel.text = place?.type
-        cell.photoImageView.image = UIImage(data: (place?.imageData)!)
+        cell.placeImageView.image = UIImage(data: (place?.imageData)!)
         return cell
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let place = places?[indexPath.row]
         let newPlaceVC = NewPlaceViewController()
         newPlaceVC.currentPlace = place
@@ -57,15 +68,7 @@ class MainViewController: UITableViewController {
     
     
     func setUpNavigation ()  {
-        let label: UILabel = {
-            let lab = UILabel()
-            lab.text = "Favourite places"
-            lab.textColor = UIColor.black
-            lab.font = UIFont(name: "Snell Roundhand", size: 32)
-            lab.textAlignment = .center
-            return lab
-        }()
-        self.navigationItem.titleView = label
+        self.navigationItem.titleView = titleLabel
         self.navigationController!.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9137254902, green: 0.8, blue: 0.7764705882, alpha: 1)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(secondView))

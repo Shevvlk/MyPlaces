@@ -2,9 +2,9 @@
 import UIKit
 
 
-class LocationdataTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell {
     
-    let photoImageView : UIImageView = {
+    let placeImageView : UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.translatesAutoresizingMaskIntoConstraints = false 
@@ -17,8 +17,6 @@ class LocationdataTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: "Geeza Pro", size: 20)
         label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.layer.cornerRadius = 5
-        label.clipsToBounds = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,7 +46,7 @@ class LocationdataTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(photoImageView)
+        self.contentView.addSubview(placeImageView)
         containerView.addSubview(locationLabel)
         containerView.addSubview(nameLabel)
         containerView.addSubview(typeLabel)
@@ -56,18 +54,19 @@ class LocationdataTableViewCell: UITableViewCell {
         self.backgroundColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
         constraints ()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func constraints () {
-        photoImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        photoImageView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:10).isActive = true
-        photoImageView.widthAnchor.constraint(equalToConstant:70).isActive = true
-        photoImageView.heightAnchor.constraint(equalToConstant:70).isActive = true
+        placeImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+        placeImageView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:10).isActive = true
+        placeImageView.widthAnchor.constraint(equalToConstant:70).isActive = true
+        placeImageView.heightAnchor.constraint(equalToConstant:70).isActive = true
         
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo:self.photoImageView.trailingAnchor, constant:10).isActive = true
+        containerView.leadingAnchor.constraint(equalTo:self.placeImageView.trailingAnchor, constant:10).isActive = true
         containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-10).isActive = true
         containerView.heightAnchor.constraint(equalToConstant:60).isActive = true
         
@@ -83,5 +82,4 @@ class LocationdataTableViewCell: UITableViewCell {
         typeLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
         typeLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
     }
-    
 }

@@ -16,9 +16,9 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        photoImageCell.imageOfPlaceView.image = (info[.editedImage] as? UIImage)!
-        photoImageCell.imageOfPlaceView.contentMode = .scaleAspectFill
-        photoImageCell.imageOfPlaceView.clipsToBounds = true
+        photoImageCell.placeImageView.image = (info[.editedImage] as? UIImage)!
+        photoImageCell.placeImageView.contentMode = .scaleAspectFill
+        photoImageCell.placeImageView.clipsToBounds = true
         imageIsChanged = true
         
         dismiss(animated: true)

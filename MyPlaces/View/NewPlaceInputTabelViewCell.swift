@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CustomInputTabelViewCell: UITableViewCell {
+class NewPlaceInputTabelViewCell: UITableViewCell {
     
     let labelDescription : UILabel = {
         let label = UILabel()
@@ -24,6 +24,7 @@ class CustomInputTabelViewCell: UITableViewCell {
         self.selectionStyle = .none
         constraints ()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -36,5 +37,10 @@ class CustomInputTabelViewCell: UITableViewCell {
         textFieldDescription.topAnchor.constraint(equalTo:self.labelDescription.bottomAnchor).isActive = true
         textFieldDescription.rightAnchor.constraint(equalTo:self.contentView.rightAnchor,constant: -16).isActive = true
         textFieldDescription.bottomAnchor.constraint(equalTo:self.contentView.bottomAnchor).isActive = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.endEditing(true)
     }
 }
