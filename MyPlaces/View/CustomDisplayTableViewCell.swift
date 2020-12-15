@@ -1,40 +1,21 @@
-//
-//  LocationdataTableViewCell.swift
-//  MyPlaces
-//
-//  Created by Alexandr on 04.09.2020.
-//  Copyright © 2020 Alexandr. All rights reserved.
-//
 
 import UIKit
 
-// MARK: - Кастомная версия ячейки 
 
 class LocationdataTableViewCell: UITableViewCell {
     
-    // MARK: - Изображение
-    var photoImage : UIImageView = {
-        let img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.translatesAutoresizingMaskIntoConstraints = false 
-        img.layer.cornerRadius = 35
-        img.clipsToBounds = true
-        return img
+    let photoImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFill
+        imgView.translatesAutoresizingMaskIntoConstraints = false 
+        imgView.layer.cornerRadius = 35
+        imgView.clipsToBounds = true
+        return imgView
     }()
     
-    // MARK: - Локация
-    let locationLabel : UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    // MARK: - Название места
     let  nameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont(name: "Geeza Pro", size: 20)
         label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.layer.cornerRadius = 5
         label.clipsToBounds = true
@@ -42,17 +23,23 @@ class LocationdataTableViewCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - Тип места
-    let typeLabel : UILabel = {
+    let locationLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "Geeza Pro", size: 15)
+        label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8505162119)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // MARK: - Контейнер
-    let containerView : UIView = {
+    let typeLabel : UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Geeza Pro", size: 15)
+        label.textColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8505162119)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let containerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
@@ -61,26 +48,26 @@ class LocationdataTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(photoImage)
+        self.contentView.addSubview(photoImageView)
         containerView.addSubview(locationLabel)
         containerView.addSubview(nameLabel)
         containerView.addSubview(typeLabel)
         self.contentView.addSubview(containerView)
+        self.backgroundColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
         constraints ()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Констрейты
-    func constraints () {
-        photoImage.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        photoImage.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:10).isActive = true
-        photoImage.widthAnchor.constraint(equalToConstant:70).isActive = true
-        photoImage.heightAnchor.constraint(equalToConstant:70).isActive = true
+    private func constraints () {
+        photoImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+        photoImageView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:10).isActive = true
+        photoImageView.widthAnchor.constraint(equalToConstant:70).isActive = true
+        photoImageView.heightAnchor.constraint(equalToConstant:70).isActive = true
         
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo:self.photoImage.trailingAnchor, constant:10).isActive = true
+        containerView.leadingAnchor.constraint(equalTo:self.photoImageView.trailingAnchor, constant:10).isActive = true
         containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-10).isActive = true
         containerView.heightAnchor.constraint(equalToConstant:60).isActive = true
         

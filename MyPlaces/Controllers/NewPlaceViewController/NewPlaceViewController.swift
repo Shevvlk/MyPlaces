@@ -1,0 +1,188 @@
+
+import UIKit
+import RealmSwift
+
+class NewPlaceViewController: UITableViewController {
+    
+    private var realm:  Realm?
+    private let storageManager = StorageManager()
+    
+    var currentPlace: Place? = nil
+    var imageIsChanged = false
+    
+    let photoImageCell: CustomImageTabelViewCell = CustomImageTabelViewCell()
+    
+    let placeNameCell: CustomInputTabelViewCell = {
+        let placeName = CustomInputTabelViewCell()
+        placeName.labelDescription.text = "Name"
+        placeName.textFieldDescription.placeholder = "Place name"
+        return placeName
+    }()
+    
+    let placeLocationCell: CustomInputTabelViewCell = {
+        let placeLocation = CustomInputTabelViewCell()
+        placeLocation.labelDescription.text = "Location"
+        placeLocation.textFieldDescription.placeholder = "Place location"
+        return placeLocation
+    }()
+    
+    let placeTypeCell: CustomInputTabelViewCell = {
+        let placeType = CustomInputTabelViewCell()
+        placeType.labelDescription.text = "Type"
+        placeType.textFieldDescription.placeholder = "Place type"
+        return placeType
+    }()
+    
+    let labelTitle: UILabel = {
+        let label = UILabel()
+        label.text = "New places"
+        label.textColor = UIColor.black
+        label.font = UIFont(name: "Snell Roundhand", size: 32)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
+        tableView.tableFooterView = UIView()
+        tableView.separatorInset.right = 15
+        tableView.showsVerticalScrollIndicator = false
+        
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification,
+                                               object:  placeNameCell.textFieldDescription,
+                                               queue: OperationQueue.main)
+        { _ in
+            let textCount =  self.placeNameCell.textFieldDescription.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+            let textIsNotEmpty = textCount > 0
+            self.navigationItem.rightBarButtonItem?.isEnabled = textIsNotEmpty
+        }
+        
+        setupEditScreen()
+        
+        setUpNavigation()
+        
+        do {
+            realm = try Realm()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row{
+        case 0:
+            return photoImageCell
+        case 1:
+            return placeNameCell
+        case 2:
+            return placeLocationCell
+        case 3:
+            return placeTypeCell
+        default:
+            fatalError("Unknown number of sections")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 320
+        default:
+            return 75
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            callAlert()
+        }
+    }
+    
+    private func setupEditScreen() {
+        
+        if currentPlace != nil {
+            
+            imageIsChanged = true
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            
+            photoImageCell.imageOfPlaceView.image = image
+            photoImageCell.imageOfPlaceView.contentMode = .scaleAspectFill
+            photoImageCell.imageOfPlaceView.clipsToBounds = true
+            placeNameCell.textFieldDescription.text = currentPlace?.name
+            placeLocationCell.textFieldDescription.text = currentPlace?.location
+            placeTypeCell.textFieldDescription.text = currentPlace?.type
+        }
+    }
+    
+    private func setUpNavigation () {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(returnMainViewController))
+        navigationController?.navigationBar.tintColor = .black
+        
+        if let _ = currentPlace {
+            labelTitle.text = placeNameCell.textFieldDescription.text
+            self.navigationItem.titleView = labelTitle
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            
+        }
+        else {
+            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
+            self.navigationItem.titleView = labelTitle
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(handleCansel))
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    @objc func returnMainViewController()  {
+        saveNewPlace()
+        if let _ = currentPlace {
+            navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc func handleCansel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func saveNewPlace() {
+        
+        var image: UIImage?
+        
+        if imageIsChanged {
+            image =  photoImageCell.imageOfPlaceView.image
+        } else {
+            image = #imageLiteral(resourceName: "background icon")
+        }
+        
+        let imageData = image?.pngData()
+        let newPlace = Place(name: placeNameCell.textFieldDescription.text!,
+                             location: placeLocationCell.textFieldDescription.text,
+                             type: placeTypeCell.textFieldDescription.text,
+                             imageData: imageData)
+        
+        if let currentPlace = currentPlace {
+            storageManager.overstore(currentPlace, newPlace)
+            
+        } else {
+            storageManager.save(newPlace)
+        }
+    }
+}
+
+

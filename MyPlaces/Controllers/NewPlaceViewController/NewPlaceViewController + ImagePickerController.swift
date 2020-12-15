@@ -1,26 +1,24 @@
 
 import UIKit
 
-extension AddingNewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
-        
         if UIImagePickerController.isSourceTypeAvailable(source) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
-            present(imagePicker, animated: true)
+            
+            self.present(imagePicker, animated: true)
         }
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        placeImage?.image = info[.editedImage] as? UIImage
-        placeImage?.contentMode = .scaleAspectFill
-        placeImage?.clipsToBounds = true
-        
+        photoImageCell.imageOfPlaceView.image = (info[.editedImage] as? UIImage)!
+        photoImageCell.imageOfPlaceView.contentMode = .scaleAspectFill
+        photoImageCell.imageOfPlaceView.clipsToBounds = true
         imageIsChanged = true
         
         dismiss(animated: true)
