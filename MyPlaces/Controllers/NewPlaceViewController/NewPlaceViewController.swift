@@ -54,27 +54,22 @@ class NewPlaceViewController: UITableViewController {
         tableView.separatorInset.right = 15
         tableView.showsVerticalScrollIndicator = false
         
-        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification,
-                                               object:  placeNameCell.textFieldDescription,
-                                               queue: OperationQueue.main)
-        { _ in
-            let textCount =  self.placeNameCell.textFieldDescription.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-            let textIsNotEmpty = textCount > 0
-            self.navigationItem.rightBarButtonItem?.isEnabled = textIsNotEmpty
-        }
-        
         setupEditScreen()
         
         setUpNavigation()
+        
+        registerForTextFieldNotification()
         
         do {
             realm = try Realm()
         } catch {
             print(error.localizedDescription)
         }
-        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        removeForTextFieldNotification()
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -148,6 +143,21 @@ class NewPlaceViewController: UITableViewController {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(handleCansel))
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         }
+    }
+    
+    func registerForTextFieldNotification() {
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification,
+                                               object:  placeNameCell.textFieldDescription, queue: nil)
+        { _ in
+            let textCount = self.placeNameCell.textFieldDescription.text?.count ?? 0
+            let textIsNotEmpty = textCount > 0
+            self.navigationItem.rightBarButtonItem?.isEnabled = textIsNotEmpty
+        }
+    }
+    
+    func removeForTextFieldNotification() {
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: placeNameCell.textFieldDescription)
+        
     }
     
     @objc func returnMainViewController()  {

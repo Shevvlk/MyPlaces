@@ -18,6 +18,7 @@ class NewPlaceInputTabelViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        textFieldDescription.delegate = self
         self.contentView.addSubview(labelDescription)
         self.contentView.addSubview(textFieldDescription)
         self.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9529411765, blue: 0.9411764706, alpha: 1)
@@ -38,9 +39,11 @@ class NewPlaceInputTabelViewCell: UITableViewCell {
         textFieldDescription.rightAnchor.constraint(equalTo:self.contentView.rightAnchor,constant: -16).isActive = true
         textFieldDescription.bottomAnchor.constraint(equalTo:self.contentView.bottomAnchor).isActive = true
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.endEditing(true)
+}
+
+extension NewPlaceInputTabelViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

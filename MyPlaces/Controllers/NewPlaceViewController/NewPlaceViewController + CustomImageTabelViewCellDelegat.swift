@@ -2,7 +2,7 @@
 import UIKit
 
 extension NewPlaceViewController: NewPlaceImageTabelViewCellDelegate {
-    func customImageTabelViewCellDelegate() {
+    func goingToMapViewController() {
         let mapViewController = MapViewController()
         mapViewController.name = placeNameCell.textFieldDescription.text ?? ""
         mapViewController.location = placeLocationCell.textFieldDescription.text ?? ""

@@ -3,9 +3,8 @@ import UIKit
 
 
 protocol NewPlaceImageTabelViewCellDelegate: AnyObject {
-    func customImageTabelViewCellDelegate()
+    func goingToMapViewController()
 }
-
 
 class NewPlaceImageTabelViewCell: UITableViewCell {
     
@@ -15,7 +14,6 @@ class NewPlaceImageTabelViewCell: UITableViewCell {
         
         let photoImageView = UIImageView()
         let imagePhoto = UIImage(named: "addingPhoto")
-        
         photoImageView.image = imagePhoto
         photoImageView.contentMode = .center
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,16 +38,15 @@ class NewPlaceImageTabelViewCell: UITableViewCell {
         self.backgroundColor = #colorLiteral(red: 0.9113927484, green: 0.8890479803, blue: 0.8892830014, alpha: 1)
         constraints ()
         
-        self.buttonMap.addTarget(self, action: #selector(subscribeButtonTapped(_:)), for: .touchUpInside)
+        self.buttonMap.addTarget(self, action: #selector(goingToMapViewController), for: .touchUpInside)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func subscribeButtonTapped(_ sender: UIButton) {
-        
-        if let _ = delegate {
-            self.delegate?.customImageTabelViewCellDelegate()
+    @objc func goingToMapViewController() {
+        if let delegate = delegate {
+            delegate.goingToMapViewController()
         }
     }
     
