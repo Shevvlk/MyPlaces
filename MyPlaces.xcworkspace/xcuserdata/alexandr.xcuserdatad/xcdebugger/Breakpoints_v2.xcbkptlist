@@ -201,8 +201,8 @@
             filePath = "MyPlaces/Controllers/NewPlaceViewController/NewPlaceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "saveNewPlace()"
             landmarkType = "7">
          </BreakpointContent>

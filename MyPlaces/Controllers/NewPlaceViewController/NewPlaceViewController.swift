@@ -68,6 +68,9 @@ class NewPlaceViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        if currentPlace != nil, placeNameCell.textFieldDescription.text?.count != 0 {
+            saveNewPlace()
+        }
         removeForTextFieldNotification()
     }
     
@@ -128,16 +131,16 @@ class NewPlaceViewController: UITableViewController {
     }
     
     private func setUpNavigation () {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(returnMainViewController))
         navigationController?.navigationBar.tintColor = .black
         
         if let _ = currentPlace {
             labelTitle.text = placeNameCell.textFieldDescription.text
             self.navigationItem.titleView = labelTitle
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-            
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         }
         else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(returnMainViewController))
             navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9843270183, green: 0.9525683522, blue: 0.9402120709, alpha: 1)
             self.navigationItem.titleView = labelTitle
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(handleCansel))
@@ -162,11 +165,7 @@ class NewPlaceViewController: UITableViewController {
     
     @objc func returnMainViewController()  {
         saveNewPlace()
-        if let _ = currentPlace {
-            navigationController?.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleCansel() {
@@ -195,5 +194,18 @@ class NewPlaceViewController: UITableViewController {
         } else {
             storageManager.save(newPlace)
         }
+    }
+    
+    @objc func shareTapped() {
+
+        guard let image = photoImageCell.placeImageView.image?.jpegData(compressionQuality: 0.8) else { return }
+        
+        let description = placeNameCell.textFieldDescription.text!
+        let location = placeLocationCell.textFieldDescription.text ?? ""
+        let descAndLocation = description + "\n" + location
+        
+        let activityViewController = UIActivityViewController(activityItems: [image, descAndLocation], applicationActivities: [])
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityViewController, animated: true)
     }
 }
