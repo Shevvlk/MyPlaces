@@ -4,13 +4,10 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
     
-    let placeImageView : UIImageView = {
-        let imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFill
-        imgView.translatesAutoresizingMaskIntoConstraints = false 
-        imgView.layer.cornerRadius = 35
-        imgView.clipsToBounds = true
-        return imgView
+    let placeImageView : ShadowView = {
+        let shadowView = ShadowView()
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        return shadowView
     }()
     
     let  nameLabel : UILabel = {
@@ -40,7 +37,6 @@ class MainTableViewCell: UITableViewCell {
     private let containerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
         return view
     }()
     
