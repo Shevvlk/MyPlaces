@@ -2,7 +2,7 @@
 import UIKit
 import RealmSwift
 
-class NewPlaceViewController: UITableViewController {
+final class DetailViewController: UITableViewController {
     
     private var realm:  Realm?
     private let storageManager = StorageManager()
@@ -14,22 +14,22 @@ class NewPlaceViewController: UITableViewController {
     
     let placeNameCell: NewPlaceInputTabelViewCell = {
         let placeName = NewPlaceInputTabelViewCell()
-        placeName.labelDescription.text = "Name"
-        placeName.textFieldDescription.placeholder = "Place name"
+        placeName.descriptionLabel.text = "Name"
+        placeName.descriptionTF.placeholder = "Place name"
         return placeName
     }()
     
     let placeLocationCell: NewPlaceInputTabelViewCell = {
         let placeLocation = NewPlaceInputTabelViewCell()
-        placeLocation.labelDescription.text = "Location"
-        placeLocation.textFieldDescription.placeholder = "Place location"
+        placeLocation.descriptionLabel.text = "Location"
+        placeLocation.descriptionTF.placeholder = "Place location"
         return placeLocation
     }()
     
     let placeTypeCell: NewPlaceInputTabelViewCell = {
         let placeType = NewPlaceInputTabelViewCell()
-        placeType.labelDescription.text = "Type"
-        placeType.textFieldDescription.placeholder = "Place type"
+        placeType.descriptionLabel.text = "Type"
+        placeType.descriptionTF.placeholder = "Place type"
         return placeType
     }()
     
@@ -68,7 +68,7 @@ class NewPlaceViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if currentPlace != nil, placeNameCell.textFieldDescription.text?.count != 0 {
+        if currentPlace != nil, placeNameCell.descriptionTF.text?.count != 0 {
             saveNewPlace()
         }
         removeForTextFieldNotification()
@@ -109,7 +109,7 @@ class NewPlaceViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            callAlert()
+            callAlertController()
         }
     }
     
@@ -124,9 +124,9 @@ class NewPlaceViewController: UITableViewController {
             photoImageCell.placeImageView.image = image
             photoImageCell.placeImageView.contentMode = .scaleAspectFill
             photoImageCell.placeImageView.clipsToBounds = true
-            placeNameCell.textFieldDescription.text = currentPlace?.name
-            placeLocationCell.textFieldDescription.text = currentPlace?.location
-            placeTypeCell.textFieldDescription.text = currentPlace?.type
+            placeNameCell.descriptionTF.text = currentPlace?.name
+            placeLocationCell.descriptionTF.text = currentPlace?.location
+            placeTypeCell.descriptionTF.text = currentPlace?.type
         }
     }
     
@@ -134,10 +134,10 @@ class NewPlaceViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = .black
         
         if let _ = currentPlace {
-            labelTitle.text = placeNameCell.textFieldDescription.text
+            labelTitle.text = placeNameCell.descriptionTF.text
             self.navigationItem.titleView = labelTitle
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(callActivityController))
         }
         else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(returnMainViewController))
@@ -150,16 +150,16 @@ class NewPlaceViewController: UITableViewController {
     
     func registerForTextFieldNotification() {
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification,
-                                               object:  placeNameCell.textFieldDescription, queue: nil)
+                                               object:  placeNameCell.descriptionTF, queue: nil)
         { _ in
-            let textCount = self.placeNameCell.textFieldDescription.text?.count ?? 0
+            let textCount = self.placeNameCell.descriptionTF.text?.count ?? 0
             let textIsNotEmpty = textCount > 0
             self.navigationItem.rightBarButtonItem?.isEnabled = textIsNotEmpty
         }
     }
     
     func removeForTextFieldNotification() {
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: placeNameCell.textFieldDescription)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: placeNameCell.descriptionTF)
         
     }
     
@@ -183,9 +183,9 @@ class NewPlaceViewController: UITableViewController {
         }
         
         let imageData = image?.pngData()
-        let newPlace = Place(name: placeNameCell.textFieldDescription.text!,
-                             location: placeLocationCell.textFieldDescription.text,
-                             type: placeTypeCell.textFieldDescription.text,
+        let newPlace = Place(name: placeNameCell.descriptionTF.text!,
+                             location: placeLocationCell.descriptionTF.text,
+                             type: placeTypeCell.descriptionTF.text,
                              imageData: imageData)
         
         if let currentPlace = currentPlace {
@@ -195,17 +195,5 @@ class NewPlaceViewController: UITableViewController {
             storageManager.save(newPlace)
         }
     }
-    
-    @objc func shareTapped() {
 
-        guard let image = photoImageCell.placeImageView.image?.jpegData(compressionQuality: 0.8) else { return }
-        
-        let description = placeNameCell.textFieldDescription.text!
-        let location = placeLocationCell.textFieldDescription.text ?? ""
-        let descAndLocation = description + "\n" + location
-        
-        let activityViewController = UIActivityViewController(activityItems: [image, descAndLocation], applicationActivities: [])
-        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        present(activityViewController, animated: true)
-    }
 }

@@ -1,7 +1,7 @@
 
 import UIKit
 
-extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension DetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(source) {

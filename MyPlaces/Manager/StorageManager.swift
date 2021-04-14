@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-class StorageManager {
+final class StorageManager {
     
     private var realm: Realm? {
         do {
@@ -13,13 +13,13 @@ class StorageManager {
         }
     }
     
-    func save ( _ place : Place) {
+    func save (_ place: Place) {
         try! realm?.write {
             realm?.add(place)
         }
     }
     
-    func overstore(_ editableObject: Place,_ auxiliaryObject: Place) {
+    func overstore(_ editableObject: Place, _ auxiliaryObject: Place) {
         try! realm?.write {
             editableObject.name = auxiliaryObject.name
             editableObject.location = auxiliaryObject.location
@@ -28,7 +28,7 @@ class StorageManager {
         }
     }
     
-    func delete (_ place : Place, _ token: [NotificationToken]) {
+    func delete (_ place: Place, _ token: [NotificationToken]) {
         try! realm?.write(withoutNotifying: token) {
             realm?.delete(place)
         }

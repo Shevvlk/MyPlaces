@@ -1,9 +1,9 @@
 
 import UIKit
 
-extension NewPlaceViewController {
+extension DetailViewController {
     
-    func callAlert () {
+    func callAlertController () {
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
@@ -22,4 +22,5 @@ extension NewPlaceViewController {
         
         self.present(actionSheet, animated: true)
     }
+    
 }

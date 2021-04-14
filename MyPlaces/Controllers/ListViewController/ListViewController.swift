@@ -2,7 +2,7 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UITableViewController {
+final class ListViewController: UITableViewController {
     
     private var places: Results<Place>?
     private var token:  NotificationToken? = nil
@@ -37,7 +37,7 @@ class MainViewController: UITableViewController {
         
         places = realm?.objects(Place.self)
         
-        setUpNavigation()
+        setupNavigation()
         configureSearchController ()
         
         token = realm?.observe { [weak self] notification, realm in
@@ -70,6 +70,7 @@ class MainViewController: UITableViewController {
         cell.locationLabel.text = place?.location
         cell.typeLabel.text = place?.type
         cell.placeImageView.image = UIImage(data: (place?.imageData)!)
+        
         return cell
     }
     
@@ -84,13 +85,13 @@ class MainViewController: UITableViewController {
             place = places?[indexPath.row]
         }
         
-        let newPlaceVC = NewPlaceViewController()
+        let newPlaceVC = DetailViewController()
         newPlaceVC.currentPlace = place
         self.navigationController?.pushViewController(newPlaceVC, animated: true)
     }
     
     
-    private func setUpNavigation ()  {
+    private func setupNavigation ()  {
         self.navigationItem.titleView = titleLabel
         self.navigationController!.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9137254902, green: 0.8, blue: 0.7764705882, alpha: 1)
@@ -99,8 +100,8 @@ class MainViewController: UITableViewController {
     }
     
     
-    @objc func secondView () {
-        let secondController = NewPlaceViewController()
+    @objc private func secondView () {
+        let secondController = DetailViewController()
         self.present(UINavigationController(rootViewController: secondController), animated: true, completion: nil)
     }
     
@@ -130,7 +131,8 @@ class MainViewController: UITableViewController {
 }
 
 
-extension MainViewController: UISearchResultsUpdating {
+extension ListViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         filterPlaces(for: searchController.searchBar.text ?? "")
     }

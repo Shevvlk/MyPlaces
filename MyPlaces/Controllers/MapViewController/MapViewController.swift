@@ -2,7 +2,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
     
     var location: String?
     var name = ""
@@ -27,7 +27,7 @@ class MapViewController: UIViewController {
         view.addSubview(mapView)
         view.addSubview(buttonCloseMap)
         
-        constraints ()
+        setupConstraints ()
         setupMark ()
         
         buttonCloseMap.addTarget(self, action: #selector(handleClous), for: .touchUpInside)
@@ -63,18 +63,20 @@ class MapViewController: UIViewController {
     }
     
     @objc func handleClous(){
-           self.dismiss(animated: true)
-       }
-
-    private func constraints () {
-        buttonCloseMap.topAnchor.constraint(equalTo:self.view.topAnchor,constant: 30).isActive = true
-        buttonCloseMap.rightAnchor.constraint(equalTo:self.view.rightAnchor,constant: -30).isActive = true
-        
-        mapView.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        mapView.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        mapView.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        self.dismiss(animated: true)
     }
     
-   
+    private func setupConstraints () {
+        NSLayoutConstraint.activate([
+            buttonCloseMap.topAnchor.constraint(equalTo:self.view.topAnchor,constant: 40),
+            buttonCloseMap.rightAnchor.constraint(equalTo:self.view.rightAnchor,constant: -30),
+            
+            mapView.leftAnchor.constraint(equalTo:self.view.leftAnchor),
+            mapView.topAnchor.constraint(equalTo:self.view.topAnchor),
+            mapView.rightAnchor.constraint(equalTo:self.view.rightAnchor),
+            mapView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
+        ])
+    }
+    
+    
 }

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ShadowView: UIView {
+final class ShadowView: UIView {
     
     var image: UIImage? {
         didSet {
@@ -13,7 +13,8 @@ class ShadowView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        
+        setupImageView()
         setupShadow()
     }
     
@@ -21,7 +22,7 @@ class ShadowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupShadow() {
+    private func setupShadow() {
         layer.cornerRadius = 35
         layer.shadowRadius = 4
         layer.shadowOpacity = 0.7
@@ -29,8 +30,8 @@ class ShadowView: UIView {
         layer.isGeometryFlipped = false
     }
     
-  private func setup() {
-        self.addSubview(imageView)
+    private func setupImageView() {
+        addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
